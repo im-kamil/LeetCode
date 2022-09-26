@@ -34,41 +34,79 @@ class Solution {
 //         return arr;
 //     }
 //     }
-           int[] result = new int[2];
-    result[0] = findFirst(nums, target);
-    result[1] = findLast(nums, target);
-    return result;
-}
+//            int[] result = new int[2];
+//     result[0] = findFirst(nums, target);
+//     result[1] = findLast(nums, target);
+//     return result;
+// }
 
-private int findFirst(int[] nums, int target){
-    int idx = -1;
-    int start = 0;
-    int end = nums.length - 1;
-    while(start <= end){
-        int mid = (start + end) / 2;
-        if(nums[mid] >= target){
-            end = mid - 1;
-        }else{
-            start = mid + 1;
-        }
-        if(nums[mid] == target) idx = mid;
-    }
-    return idx;
-}
+// private int findFirst(int[] nums, int target){
+//     int idx = -1;
+//     int start = 0;
+//     int end = nums.length - 1;
+//     while(start <= end){
+//         int mid = (start + end) / 2;
+//         if(nums[mid] >= target){
+//             end = mid - 1;
+//         }else{
+//             start = mid + 1;
+//         }
+//         if(nums[mid] == target) idx = mid;
+//     }
+//     return idx;
+// }
 
-private int findLast(int[] nums, int target){
-    int idx = -1;
-    int start = 0;
-    int end = nums.length - 1;
-    while(start <= end){
-        int mid = (start + end) / 2;
-        if(nums[mid] <= target){
-            start = mid + 1;
-        }else{
-            end = mid - 1;
+// private int findLast(int[] nums, int target){
+//     int idx = -1;
+//     int start = 0;
+//     int end = nums.length - 1;
+//     while(start <= end){
+//         int mid = (start + end) / 2;
+//         if(nums[mid] <= target){
+//             start = mid + 1;
+//         }else{
+//             end = mid - 1;
+//         }
+//         if(nums[mid] == target) idx = mid;
+//     }
+//     return idx;
+        int[] res=new int[]{-1,-1};
+        if(nums.length==0) return res;
+        int start=0,end=nums.length-1;
+        
+        while(start<end){
+            int mid = start + (end-start)/2;
+            
+            if(nums[mid]>=target){
+                end = mid;
+            }
+            else{
+                start = mid+1;
+            }
         }
-        if(nums[mid] == target) idx = mid;
-    }
-    return idx;
+        
+        if(nums[start] != target){
+            return res;
+        }
+        
+        res[0] = start;
+        
+        end = nums.length;
+        
+        while(start<end){
+            int mid = start + (end-start)/2;
+            
+            if(nums[mid] > target){
+                end=mid;
+            }
+            else{
+                start = mid +1;
+            }
+        }
+        
+        res[1] = start -1;
+        
+        
+        return res;
 }
 }
