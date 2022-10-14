@@ -10,25 +10,25 @@
  */
 class Solution {
     public ListNode deleteMiddle(ListNode head) {
-         if(head.next == null)
-            return null;
-        ListNode slow = head, fast = head, beforeMid = head;
-        while(fast != null && fast.next != null) {
-            beforeMid = slow;
-            slow = slow.next;
-            fast = fast.next.next;
-        }
-        beforeMid.next = slow.next;
-        return head;
-        // if(head.next!=null)
+        //  if(head.next == null)
         //     return null;
-        // ListNode turtle = head , hare = head, beforeMid = head;
-        // while(hare!=null && hare.next!=null){
-        //     beforeMid = turtle;
-        //     turtle = turtle.next;
-        //     hare = hare.next.next;
+        // ListNode slow = head, fast = head, beforeMid = head;
+        // while(fast != null && fast.next != null) {
+        //     beforeMid = slow;
+        //     slow = slow.next;
+        //     fast = fast.next.next;
         // }
-        // beforeMid.next = turtle.next;
-        //  return head;
+        // beforeMid.next = slow.next;
+        // return head;
+        if(head.next==null)
+            return null;
+        ListNode turtle = head , hare = head, beforeMid = head;
+        while(hare!=null && hare.next!=null){
+            beforeMid = turtle;
+            turtle = turtle.next;
+            hare = hare.next.next;
+        }
+        beforeMid.next = turtle.next;
+         return head;
     }
 }
