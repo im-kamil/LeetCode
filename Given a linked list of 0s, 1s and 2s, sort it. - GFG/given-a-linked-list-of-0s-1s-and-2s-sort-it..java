@@ -81,106 +81,108 @@ class Solution
     static Node segregate(Node head)
     {
         // add your code here
-           if(head==null || head.next==null)return head;
+//           if(head==null || head.next==null)return head;
 
         
 
-        Node zero=new Node(-1);
+//         Node zero=new Node(-1);
 
-        Node pz=zero;
-
-        
-
-         Node one=new Node(-1);
-
-        Node po=one;
+//         Node pz=zero;
 
         
 
-         Node two=new Node(-1);
+//          Node one=new Node(-1);
 
-        Node pt=two;
-
-        
-
-        Node curr=head;
+//         Node po=one;
 
         
 
-        while(curr!=null){
+//          Node two=new Node(-1);
 
-            if(curr.data==0){
+//         Node pt=two;
 
-                pz.next=curr;
+        
 
-                pz=pz.next;
+//         Node curr=head;
 
-            }
+        
 
-            else if(curr.data==1){
+//         while(curr!=null){
 
-                 po.next=curr;
+//             if(curr.data==0){
 
-                po=po.next;
+//                 pz.next=curr;
 
-            }
+//                 pz=pz.next;
 
-            else{
+//             }
 
-                 pt.next=curr;
+//             else if(curr.data==1){
 
-                pt=pt.next;
+//                  po.next=curr;
 
-            }
+//                 po=po.next;
+
+//             }
+
+//             else{
+
+//                  pt.next=curr;
+
+//                 pt=pt.next;
+
+//             }
 
             
 
-            curr=curr.next;
+//             curr=curr.next;
+
+//         }
+
+        
+
+//         po.next=two.next;
+
+//         pz.next=one.next;
+
+//         pt.next=null;
+
+        
+
+//         return zero.next;
+
+    
+//     }
+// }
+  Node temp = head;
+
+        ArrayList<Integer> list = new ArrayList<Integer>();
+
+        while(temp != null){
+
+            list.add(temp.data);
+
+            temp = temp.next;
 
         }
 
-        
+        Collections.sort(list);
 
-        po.next=two.next;
+        temp = head;
 
-        pz.next=one.next;
+        int i = 0;
 
-        pt.next=null;
+        while(temp != null){
 
-        
+            temp.data = list.get(i);
 
-        return zero.next;
+            temp = temp.next;
 
-    
-    }
+            i++;
+
+        }
+
+        return head;
+
 }
-//   Node temp = head;
-
-//         ArrayList<Integer> list = new ArrayList<Integer>();
-
-//         while(temp != null){
-
-//             list.add(temp.data);
-
-//             temp = temp.next;
-
-//         }
-
-//         Collections.sort(list);
-
-//         temp = head;
-
-//         int i = 0;
-
-//         while(temp != null){
-
-//             temp.data = list.get(i);
-
-//             temp = temp.next;
-
-//             i++;
-
-//         }
-
-//         return head;
-
+}
