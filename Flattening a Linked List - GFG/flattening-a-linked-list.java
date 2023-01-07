@@ -119,42 +119,55 @@ class Node
     the flattened linked list. */
 class GfG
 {
-    Node mergeTwoLists(Node a, Node b){
-    Node temp = new Node(0);
-        Node res = temp; 
+    Node merge(Node head1, Node head2)
+    {
+        Node start = new Node(-1);
+        Node node = start;
         
-        while(a != null && b != null) {
-            if(a.data < b.data) {
-                temp.bottom = a; 
-                temp = temp.bottom; 
-                a = a.bottom; 
+        while(head1 != null && head2 != null)
+        {
+            int h1 = head1.data;
+            int h2 = head2.data;
+            
+            if(h1<h2)
+            {
+                node.bottom = head1;
+                node = head1;
+                head1 = head1.bottom;
             }
-            else {
-                temp.bottom = b;
-                temp = temp.bottom; 
-                b = b.bottom; 
+            else
+            {
+                node.bottom = head2;
+                node = head2;
+                head2 = head2.bottom;
             }
+            
         }
         
-        if(a != null) temp.bottom = a; 
-        else temp.bottom = b;
-        return res.bottom; 
-    
+        while(head1!=null)
+        {
+            node.bottom = head1;
+            node = head1;
+            head1 = head1.bottom;
+        }
+        
+        while(head2!=null)
+        {
+            node.bottom = head2;
+            node = head2;
+            head2 = head2.bottom;
+        }
+        
+        return start.bottom;
+        
     }
+    
     Node flatten(Node root)
     {
-       
-            if (root == null || root.next == null) 
-                return root; 
-      
-            // recur for list on right 
-            root.next = flatten(root.next); 
-      
-            // now merge 
-            root = mergeTwoLists(root, root.next); 
-      
-            // return the root 
-            // it will be in turn merged with its left 
-            return root; 
+        if(root==null) return null;
+        
+        root = merge(root, flatten(root.next));
+        
+        return root;
     }
 }
