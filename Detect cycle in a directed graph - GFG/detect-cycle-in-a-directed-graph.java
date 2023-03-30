@@ -62,9 +62,10 @@ class Solution {
         
         for(int i = 0;i<V;i++) {
             if(vis[i] == 0) {
-                if(dfsCheck(i, adj, vis, pathVis) == true) return true; 
+                if(dfsCheck(i, adj, vis, pathVis) == true) return true;
             }
         }
-        return false; 
+       
+        return false;
     }
 }
