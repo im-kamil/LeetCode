@@ -30,5 +30,17 @@ class Solution {
         res += helper(node.left, targetSum, preSum, map) + helper(node.right, targetSum, preSum, map);
         map.put(preSum, map.get(preSum) - 1);
         return res;
+    //     if(root==null) return 0;
+    //     int n = dfs(root, targetSum), left = pathSum(root.left, targetSum), right = pathSum(root.right, targetSum);
+    //     return n+left+right;
+    // }
+    // public int dfs(TreeNode node, int targetSum){
+    //         if(node==null) return 0;
+    //         int sum=0;
+    //         if(targetSum==node.val) sum++;
+    //         sum+= dfs(node.left, targetSum-node.val);
+    //         sum+= dfs(node.right, targetSum-node.val);
+    //         return sum;
+        
     }
 }
