@@ -15,14 +15,12 @@
  */
 class Solution {
     public int goodNodes(TreeNode root) {
-        return goodNodes(root, -10000);
+        return goodNodes(root, root.val);
     }
 
-    public int goodNodes(TreeNode root, int ma) {
+    public int goodNodes(TreeNode root, int val) {
         if (root == null) return 0;
-        int res = root.val >= ma ? 1 : 0;
-        res += goodNodes(root.left, Math.max(ma, root.val));
-        res += goodNodes(root.right, Math.max(ma, root.val));
-        return res;
+        int max = Math.max(root.val, val);
+        return (root.val>=val?1:0) + goodNodes(root.left, max) + goodNodes(root.right, max);
     }
 }
