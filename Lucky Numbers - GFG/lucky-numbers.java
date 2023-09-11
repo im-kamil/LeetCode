@@ -37,12 +37,12 @@ class Solution
     public static boolean isLucky(int n)
     {
         // Your code here
-        for(int i =2; i<=n ; i++){
-            if(n%i == 0){
-                return false;
+        for(int i=2; i<=n ; i++){
+            if(n%i==0){
+                return false ;
             }
             n -= n/i;
         }
-        return true;
+        return true ;
     }
 }
